@@ -6,6 +6,7 @@ using llamaindex.
 ## Prerequisites
 
 OpenAI API Key
+
 Python 3.6 or later.
 
 ## Installation
@@ -41,6 +42,14 @@ Here is an example of how to run the script:
 ```
 
 This command will generate an output.html file in the ./output directory.
+
+You can then ask additional questions about the video by running:
+
+```bash
+python3 repl.py
+```
+
+The output of the repl gets appended to output.html
 
 Note:
 

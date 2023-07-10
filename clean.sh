@@ -12,3 +12,4 @@ rm -f requirements.txt~
 rm -f yt-sum.py~
 rm -f env.example~
 rm -f .gitignore~
+rm -f repl.py~

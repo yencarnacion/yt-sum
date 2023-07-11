@@ -31,17 +31,21 @@ cp env.example env.py
 
 And enter your openai API Key into the variable OPENAI_API_KEY in env.py
 
-Usage
+## Usage
+
 To summarize a YouTube video, you need to provide the YouTube URL as an argument
 when you run the go.sh script.
 
-Here is an example of how to run the script:
+Here is are some examples of how to run the script:
 
 ```bash
 ./go.sh https://www.youtube.com/watch?v=wbiEGHjlE4Y
+
+./go.sh https://www.youtube.com/watch?v=-hxeDjAxvJ8
 ```
 
-This command will generate an output.html file in the ./output directory.
+Running a command from like the above will generate an output.html
+file in the ./output directory.
 
 You can then ask additional questions about the video by running:
 
@@ -51,13 +55,14 @@ python3 repl.py
 
 The output of the repl gets appended to output.html
 
-Note:
+## Other:
 
-The script is a work in progress.  It blows up on certain videos for reasons I
-have not debugged yet.  Also, if you pass a url with the character &amp;
-on *nix, it will give an
-error (e.g., https://www.youtube.com/watch?v=-hxeDjAxvJ8&t=108s ).
+The script is a work in progress. If you pass a url with the character &amp;
+on *nix, it will give an error
+(e.g., https://www.youtube.com/watch?v=-hxeDjAxvJ8&t=108s ).
 This is a *nix thing I will correct at some later point in time.
+
+## Inspiration for the script
 
 The prompts that follow were copied from https://github.com/daveshap/Quickly_Extract_Science_Papers which has an MIT license.
 ```

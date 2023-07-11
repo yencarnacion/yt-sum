@@ -38,12 +38,14 @@ def get_video_transcript(video_id):
 def index_persist(transcript):
     UnstructuredReader = download_loader("UnstructuredReader", refresh_cache=True)
     loader = UnstructuredReader()
+
     # Create a temporary file and write the string data to it
     with tempfile.NamedTemporaryFile(delete=False,  mode='w') as temp:
         for item in transcript:
-            temp.write(f'{item}\n')
+            text = item['text']
+            temp.write(text +'\n')
         temp_file_path = Path(temp.name)
-
+    
     # Load the data from the temporary file
     data = loader.load_data(file=temp_file_path, split_documents=False)
 
@@ -56,11 +58,12 @@ def index_persist(transcript):
 
 def get_summary():
     storage_context = StorageContext.from_defaults(persist_dir="./storage")
-    index = load_index_from_storage(storage_context)
 
+    index = load_index_from_storage(storage_context)
 
     query_engine = index.as_query_engine()
 
+    
     question_01 = "what is this video about?"
     response_01 = query_engine.query(question_01)
 
@@ -73,10 +76,10 @@ def get_summary():
     question_04 = "can you give me an analogy or metaphor that will help explain this to a broad audience"
     response_04 = query_engine.query(question_04)
 
-    response = [ {question_01: response_01},
-                 {question_02: response_02},
-                 {question_03: response_03},
-                 {question_04: response_04}
+    response = [ {question_01: response_01.response},
+                 {question_02: response_02.response},
+                 {question_03: response_03.response},
+                 {question_04: response_04.response}
                 ]
 
     return response

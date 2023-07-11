@@ -2,7 +2,7 @@
 
 rm -f clean.sh~
 rm -rf __pycache__
-rm -rf output
+rm -rf output/output.html
 rm -rf storage
 rm -f env.py~
 rm -f go.sh~
